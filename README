@@ -1,0 +1,75 @@
+This software package contains two elements of
+
+  1. Eventline
+
+  2. Timeline
+
+Both are described below.
+
+--------------------------------------------------------------------
+
+                                E V E N T L I N E
+
+eventline Plugin for DokuWiki
+
+All documentation for this plugin can be found at
+http://www.dokuwiki.org/plugin:eventline
+
+If you install this plugin manually, make sure it is installed in
+lib/plugins/eventline/ - if the folder is called different it
+will not work!
+
+Please refer to http://www.dokuwiki.org/plugins for additional info
+on how to install plugins in DokuWiki.
+
+----
+Copyright (C) Tom Cafferty <tcafferty@glocalfocal.com>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2 of the License
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+See the COPYING file in your DokuWiki folder for details
+
+--------------------------------------------------------------------
+
+                                T I M E L I N E
+
+  What is this?
+  -------------
+  Timeline is a DHTML-based AJAXy timeline.
+
+  How do I customize Timeline?
+  ----------------------------
+  Refer to the Timeline web site at 
+  http://code.google.com/p/simile-widgets/
+  
+  Mailing List and Forum
+  ----------------------
+  Join the community by joining the Google Group SIMILE Widgets
+  http://groups.google.com/group/simile-widgets/
+
+  Licensing and legal issues
+  --------------------------
+  Timeline is open source software and are licensed under the BSD license
+  located in the LICENSE.txt file located in the same directory as this very file
+  you are reading.
+
+  Credits
+  -------
+  This software was created by the SIMILE project and originally written
+  by the SIMILE development team (in alphabetical order):
+
+   - David François Huynh <dfhuynh at csail.mit.edu>
+
+                                --- o ---
+
+  Thanks for your interest.
+
+                                                        The SIMILE Project
+                                                      http://simile.mit.edu/
