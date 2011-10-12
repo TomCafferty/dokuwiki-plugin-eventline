@@ -1,0 +1,27 @@
+/* timeline */
+div#eventlineplugin__timeline {
+	margin: 0em; 
+	height: 400px; 
+	width: 700px; 
+	font-family: courier; 
+	border: 1px solid #aaa;
+	font-size: 12px;
+	overflow-x:hidden; 
+	overflow-y:scroll;
+	position: relative; 
+	line-height: 15.6px;
+}
+
+/* controls */
+div#eventlineplugin__controls  {
+	width: 90%;  
+	font-family: courier; 
+	font-size: 12px;
+}
+
+/* data */
+div#eventlineplugin__data  {
+    margin: 10px 0;
+	font-family: courier; 
+	font-size: 12px;
+}

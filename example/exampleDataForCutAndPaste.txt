@@ -1,0 +1,28 @@
+<data>
+
+<event start='1945' title='As We May Think (article)' durationEvent='false' link='http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/3881/|titleLink'> 
+In his Atlantic Monthly article, Vannevar Bush describes the Memex. With this envisioned device an individual would compress and store all of their books, records, and communications, "mechanized so that it may be consulted with exceeding speed and flexibility". Users would add or follow associative trails of links and notes created by that individual, or recorded by other researchers. (ref: http://en.wikipedia.org/wiki/Memex|Wikipedia)</event>
+
+<event start='1987' end='2004' durationEvent='true' title='Hypercard'>
+An application program created for Apple Computer, that combines database capabilities with a graphical, flexible, user-modifiable interface. It is based on the concept of a "stack" of virtual "cards". Cards hold data, just as they would in a rolodex. You could build individual "cards", organized into "stacks", and linked together by clickable buttons; (ref: http://www.itworld.com/offbeat/81942/ahead-their-time-nine-technologies-came-early?page=0,3)</event>
+
+<event start='1972' end='1982' earliestEnd='1980' isDuration='true' title='ZOG'>
+Developed by Donald McCracken and Robert Akscyn at Carnegie Mellon University. A ZOG database consisted of frames of text organized hierarchically, with some hypertext like cross-referencing capability. (ref: http://www.livinginternet.com/w/wi_hyper.htm|livinginternet.com)</event>
+
+<event start='March 25, 1995' earliestEnd='2011' end='2012' isDuration='true' title='WikiWikiWeb' link='http://c2.com/cgi/wiki?FrontPage|titleLink' >
+Ward Cunningham launches WikiWikiWeb, the first wiki. It provided pages that can be edited via the browser, with a version history for each page. Users were encouraged to contribute information on programming patterns. The site was named after a Honolulu shuttle bus called Wiki Wiki.  The site is active today. Ward Cunningham provided a version of his wiki software, called Wiki Base, to the public. (picture: by Andrew Laing at http://en.wikipedia.org/wiki/File:HNL_Wiki_Wiki_Bus.jpg license CC BY-SA 2.0)</event>
+
+<event start='1990' end='1991' isDuration='true' title='WWW' >
+Tim Berners-Lee of CERN builds the first hypertext client, which he called World Wide Web, and the first hypertext server. In 1991 he posted a short summary of the World Wide Web project on the alt.hypertext newsgroup, marking the debut of the Web as a publicly available service on the Internet. (ref: http://en.wikipedia.org/wiki/History_of_wikis, picture: http://www.w3.org)</event>
+
+<event start='1999' earliestEnd='2011' end='2012' isDuration='true' title='PhpWiki' >
+The first Wiki written in PHP to be publicly released. (ref: http://en.wikipedia.org/wiki/PhpWiki, picture: http://en.wikipedia.org/wiki/File:PhpWiki.png, License: GNU Free Documentation License)</event>
+
+<event start='2000' end='2012' earliestEnd='2011' isDuration='true' title='Sensei s Library' >A wiki dedicated to discussion of the game of Go, created by Morten G. Pahle and Arno Hollosi. It is one of the earliest and most successful wikis and today contains over 20,000 pages. (ref: http://en.wikipedia.org/wiki/History_of_wikis)</event>
+
+<event start='1998' end='2012' earliestEnd='2011' isDuration='true' title='TWiki'>Wiki, created in Perl by Peter Thoeny, stores data in plain text files instead of in a database. (ref: http://en.wikipedia.org/wiki/History_of_wikis)</event>
+
+<event start='January 15, 2001' end='2012' earliestEnd='2011' isDuration='true' title='Wikipedia' >Wikipedia is formally launched by Jimmy Wales and Larry Sanger. Wikipedia passed 1,000 articles around 12 February 2001, and 10,000 articles around 7 September. In the first year of its existence, over 20,000 encyclopedia entries were created at a rate of over 1,500 articles per month. On 30 August 2002, the article count reached 40,000. Today, Wikipedia includes 19.7 million freely usable articles in over two hundred languages.(ref: http://en.wikipedia.org/wiki/History_of_wikis)</event>
+
+</data>
+~~TOOLS:both~~
