@@ -17,6 +17,17 @@ require_once (DOKU_INC.'inc/parserutils.php');
 
 class action_plugin_eventline extends DokuWiki_Action_Plugin {
 
+    function getInfo() {
+        return array(
+            'author' => 'Tom Cafferty',
+            'email'  => 'tcafferty@glocalfocal.com',
+            'date'   => '2011-09-30',
+            'name'   => 'eventline',
+            'desc'   => 'Integrate simile timeline with dokuwiki',
+            'url'    => 'http://www.dokuwiki.org/plugin:eventline',
+        );
+    }
+
     /**
      * Register its handlers with the DokuWiki's event controller
      */
