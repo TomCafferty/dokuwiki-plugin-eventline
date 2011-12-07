@@ -11,7 +11,6 @@
 if(!defined('DOKU_INC')) define('DOKU_INC',(dirname(__FILE__).'/../../').'/');
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
-require_once (DOKU_INC.'inc/parserutils.php');
 
 /**
  * All DokuWiki plugins to extend the parser/rendering mechanism
@@ -26,7 +25,7 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
             'date'   => '2011-09-30',
             'name'   => 'eventline',
             'desc'   => 'Integrate simile timeline with dokuwiki',
-            'url'    => 'http://www.dokuwiki.org/plugin:eventline',
+            'url'    => 'http://www.dokuwiki.org/plugin:eventline'
         );
     }
     /**
@@ -74,6 +73,9 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       global $ID;
       global $conf;
       if($mode != 'xhtml') return false;
+	  if($ID == NULL)
+	      $R->doc .='<p class="error"> On the associated wiki page there is a timeline. Unfortunately, timelines do not transfer from wiki pages.</p>';
+	  else {
       
       // Initialize settings from user input or conf file
       if (isset($data['bubbleMaxHeight'])) 
@@ -146,7 +148,7 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       if (strpos($ns, ':') == false) $ns = $ns . ':';   
       $dataFile = $ID.':' . $data['file'];
       $filePath = DOKU_URL . 'data/pages/'. str_replace(":", "/", $dataFile) . '.xml';
-      
+
       // Set timeline div & class for css styling and jsvascript id
 	  $R->doc .='<div id="eventlineplugin__timeline" class="eventlineplugin__class" style="height:'.$height.';"></div>';
 	  
@@ -157,12 +159,12 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  if ($controls=='on'){
 		$R->doc .='<div class="eventlineplugin__controls" id="eventlineplugin__controls"></div>';
 	  }
-	  	  
+
 	  // onload invoke timeline javascript 
 	  $R->doc .='<script> window.onload = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
 	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", "'.$overInterval.'");   </script>';	  
 	  $R->doc .='<script> window.onresize=onResize(); </script> ';
-	  
+  }
 	  return true;
     }
 }

@@ -12,8 +12,6 @@
 if(!defined('DOKU_INC')) die();
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once DOKU_PLUGIN.'action.php';
-require_once ('getXmlData.php');
-require_once (DOKU_INC.'inc/parserutils.php');
 
 class action_plugin_eventline extends DokuWiki_Action_Plugin {
 
@@ -24,7 +22,7 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
             'date'   => '2011-09-30',
             'name'   => 'eventline',
             'desc'   => 'Integrate simile timeline with dokuwiki',
-            'url'    => 'http://www.dokuwiki.org/plugin:eventline',
+            'url'    => 'http://www.dokuwiki.org/plugin:eventline'
         );
     }
 
@@ -49,7 +47,7 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
         $metadata = p_get_metadata($ID, $key, false);
         
         // keyword timeline used to include timeline javascript files
-        if ($metadata == 'timeline')  {
+        if (strpos($metadata, 'timeline') !== false) {
             $event->data['script'][] = array(
                             'type'    => 'text/javascript',
                             'charset' => 'utf-8',
@@ -91,6 +89,7 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
         if ( auth_quickaclcheck($ID) < AUTH_READ ) return false;
 
         // it's ours, no one else's
+        require_once ('getXmlData.php');
         $event->preventDefault();
 
         // get page data
