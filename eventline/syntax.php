@@ -22,7 +22,7 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
         return array(
             'author' => 'Tom Cafferty',
             'email'  => 'tcafferty@glocalfocal.com',
-            'date'   => '2011-09-30',
+            'date'   => '2011-12-29',
             'name'   => 'eventline',
             'desc'   => 'Integrate simile timeline with dokuwiki',
             'url'    => 'http://www.dokuwiki.org/plugin:eventline'
