@@ -57,7 +57,16 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
      * Handle the match
      */
     function handle($match, $state, $pos, &$handler){
+      global $ID;
         parse_str($match, $return);   
+        
+        $key = 'keywords';
+        $metaKeywords = p_get_metadata($ID, $key);
+        $metaKeywords .= ',timeline';
+        $keywords = array ('keywords' => $metaKeywords);
+        // set keyword to include sort javascript
+        p_set_metadata($ID, $keywords);
+
         return $return;
     }
 
