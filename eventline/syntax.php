@@ -11,7 +11,6 @@
 if(!defined('DOKU_INC')) define('DOKU_INC',(dirname(__FILE__).'/../../').'/');
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
-
 /**
  * All DokuWiki plugins to extend the parser/rendering mechanism
  * need to inherit from this class
@@ -57,16 +56,7 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
      * Handle the match
      */
     function handle($match, $state, $pos, &$handler){
-      global $ID;
         parse_str($match, $return);   
-        
-        $key = 'keywords';
-        $metaKeywords = p_get_metadata($ID, $key);
-        $metaKeywords .= ',timeline';
-        $keywords = array ('keywords' => $metaKeywords);
-        // set keyword to include sort javascript
-        p_set_metadata($ID, $keywords);
-
         return $return;
     }
 
@@ -82,10 +72,11 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       global $ID;
       global $conf;
       if($mode != 'xhtml') return false;
-	  if($ID == NULL)
-	      $R->doc .='<p class="error"> On the associated wiki page there is a timeline. Unfortunately, timelines do not transfer from wiki pages.</p>';
-	  else {
-      
+      if ($_SERVER['SERVER_NAME'] == 'localhost') {
+          define('TL_ROOT', '/small_gfmodx');
+      } else {
+          define('TL_ROOT', '');
+      }     
       // Initialize settings from user input or conf file
       if (isset($data['bubbleMaxHeight'])) 
         $bubbleHeight = $data['bubbleMaxHeight'];
@@ -156,7 +147,10 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       $ns = $INFO['namespace'];
       if (strpos($ns, ':') == false) $ns = $ns . ':';   
       $dataFile = $ID.':' . $data['file'];
-      $filePath = DOKU_URL . 'data/pages/'. str_replace(":", "/", $dataFile) . '.xml';
+	  if($ID == NULL)
+          $filePath = 'http://'.$_SERVER['SERVER_NAME'].'/'. TL_ROOT. '/assets/files/timelines'. str_replace(":", "/", $dataFile) . '.xml';
+	  else
+          $filePath = DOKU_URL . 'data/pages/'. str_replace(":", "/", $dataFile) . '.xml';
 
       // Set timeline div & class for css styling and jsvascript id
 	  $R->doc .='<div id="eventlineplugin__timeline" class="eventlineplugin__class" style="height:'.$height.';"></div>';
@@ -173,7 +167,6 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  $R->doc .='<script> window.onload = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
 	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", "'.$overInterval.'");   </script>';	  
 	  $R->doc .='<script> window.onresize=onResize(); </script> ';
-  }
 	  return true;
     }
 }
