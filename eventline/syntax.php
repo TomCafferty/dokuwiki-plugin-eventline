@@ -164,9 +164,9 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  }
 
 	  // onload invoke timeline javascript 
-	  $R->doc .='<script> window.onload = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
-	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", "'.$overInterval.'");   </script>';	  
-	  $R->doc .='<script> window.onresize=onResize(); </script> ';
+	  $R->doc .='<script>window.onLoad = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
+	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", "'.$overInterval.'");</script>' . "\n";
+	  $R->doc .='<script>window.onResize=onResize();</script> ';
 	  return true;
     }
 }
