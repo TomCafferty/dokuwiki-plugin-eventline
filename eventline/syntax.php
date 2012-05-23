@@ -150,13 +150,13 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  if($ID == NULL)
           $filePath = 'http://'.$_SERVER['SERVER_NAME'].'/'. TL_ROOT. '/assets/files/timelines'. str_replace(":", "/", $dataFile) . '.xml';
 	  else
-          $filePath = DOKU_URL . 'data/pages/'. str_replace(":", "/", $dataFile) . '.xml';
+          $filePath = DOKU_URL . 'lib/plugins/eventline/getData.php?id='.urlencode($dataFile);
 
       // Set timeline div & class for css styling and jsvascript id
 	  $R->doc .='<div id="eventlineplugin__timeline" class="eventlineplugin__class" style="height:'.$height.';"></div>';
 	  
 	  // Add a link to the data file for dokuwiki editing (.txt) version
-	  $R->doc .='<div id="eventlineplugin__data"> Go to <a title="' . $dataFile .'" class="wikilink1" href="doku.php?id=' . $dataFile . '">'.$data['file'].'</a> data</div>';
+	  $R->doc .='<div id="eventlineplugin__data"> Go to <a title="' . $dataFile .'" class="wikilink1" href="' . wl($dataFile) . '">'.$data['file'].'</a> data</div>';
 
 	  // Add a div for timeline filter controls if selected
 	  if ($controls=='on'){
@@ -164,9 +164,9 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  }
 
 	  // onload invoke timeline javascript 
-	  $R->doc .='<script> window.onload = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
-	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", "'.$overInterval.'");   </script>';	  
-	  $R->doc .='<script> window.onresize=onResize(); </script> ';
+	  $R->doc .='<script>window.onLoad = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
+	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", "'.$overInterval.'");</script>' . "\n";
+	  $R->doc .='<script>window.onResize=onResize();</script> ';
 	  return true;
     }
 }
