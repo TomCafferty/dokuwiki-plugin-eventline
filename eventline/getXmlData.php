@@ -13,16 +13,13 @@
  */
 
 function pullInXmlData ($dokuPageId) {
-        
-    /* Initialization */
-    define('DOKU_PATH', realpath(dirname(__FILE__)) . '/../../../');
 
     // don't refresh caches
     unset($_REQUEST['purge']); 
-    require_once DOKU_PATH . '/inc/cache.php';
+    require_once DOKU_INC . '/inc/cache.php';
     
     // from id parameter, build text file path
-    $pagePath = DOKU_PATH . '/data/pages/'. str_replace(":", "/", $dokuPageId) . '.txt';
+    $pagePath = DOKU_INC . '/data/pages/'. str_replace(":", "/", $dokuPageId) . '.txt';
     
     // get cached instructions for that file
     $cache = new cache_instructions($dokuPageId, $pagePath); 
