@@ -1,0 +1,7 @@
+base eventline
+author tom_c
+email tcafferty@glocalfocal.com
+date 2012-07-22
+name Eventline Plugin
+desc integrates MIT Timeline with dokuwiki
+url http://www.dokuwiki.org/plugin:eventline
