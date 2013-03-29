@@ -12,7 +12,7 @@
  *
  */
 
-function pullInXmlData ($dokuPageId) {
+function pullInXmlData ($dokuPageId, $wikihtml) {
 
     // don't refresh caches
     unset($_REQUEST['purge']); 
@@ -41,5 +41,15 @@ function pullInXmlData ($dokuPageId) {
     // get rendered html
     $html = $renderer->doc;
     
-    return $html;
+	if ($wikihtml=='on')
+      $ret_html = xmlentities(htmlentities($html, ENT_COMPAT));
+    else
+      $ret_html = $html;
+    return $ret_html;
+}
+
+function xmlentities ($in_string) {
+    $in_stuff    = array("[data]", "[/data]", "[event ", "[/event]", "]", "&quot;", "/^", "^/");
+    $out_stuff   = array("<data>", "</data>", "<event ", "</event>", ">", "'", "<sup>", "</sup>"); 
+    return str_replace($in_stuff, $out_stuff, $in_string); 
 }

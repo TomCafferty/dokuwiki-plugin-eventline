@@ -72,11 +72,6 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       global $ID;
       global $conf;
       if($mode != 'xhtml') return false;
-      if ($_SERVER['SERVER_NAME'] == 'localhost') {
-          define('TL_ROOT', '/small_gfmodx');
-      } else {
-          define('TL_ROOT', '');
-      }     
       // Initialize settings from user input or conf file
       if (isset($data['bubbleMaxHeight'])) 
         $bubbleHeight = $data['bubbleMaxHeight'];
@@ -142,20 +137,46 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
         $overInterval = $data['overInterval'];
       else
         $overInterval = $this->getConf('overInterval');
+        
+       if (isset($data['hotzone'])) 
+        $hotzone = $data['hotzone'];
+       else
+        $hotzone = $this->getConf('hotzone');
+        
+       if (isset($data['hzStart'])) 
+        $hzStart = $data['hzStart'];
+       else
+        $hzStart = $this->getConf('hzStart');
+        
+       if (isset($data['hzEnd'])) 
+        $hzEnd = $data['hzEnd'];
+       else
+        $hzEnd = $this->getConf('hzEnd');
+        
+       if (isset($data['hzMagnify'])) 
+        $hzMagnify = $data['hzMagnify'];
+       else
+        $hzMagnify = $this->getConf('hzMagnify');
+        
+       if (isset($data['hzUnit'])) 
+        $hzUnit = $data['hzUnit'];
+       else
+        $hzUnit = $this->getConf('hzUnit');
               
       // Get file name ($dataFile) and full url path 
       $ns = $INFO['namespace'];
       if (strpos($ns, ':') == false) $ns = $ns . ':';   
       $dataFile = $ID.':' . $data['file'];
-	  if($ID == NULL)
-          $filePath = 'http://'.$_SERVER['SERVER_NAME'].'/'. TL_ROOT. '/assets/files/timelines'. str_replace(":", "/", $dataFile) . '.xml';
-	  else
-          $filePath = DOKU_URL . 'lib/plugins/eventline/getData.php?id='.urlencode($dataFile);
+      $filePath = DOKU_URL . 'lib/plugins/eventline/getData.php?id='.urlencode($dataFile);
 
       // Set timeline div & class for css styling and jsvascript id
 	  $R->doc .='<div id="eventlineplugin__timeline" class="eventlineplugin__class" style="height:'.$height.';"></div>';
 	  
 	  // Add a link to the data file for dokuwiki editing (.txt) version
+      $info_perm     = auth_quickaclcheck($dataFile);
+      $info_filepath = fullpath(wikiFN($dataFile));
+      $info_writable = (is_writable($info_filepath) && ($info_perm >= AUTH_EDIT));
+	  if($info_writable)
 	  $R->doc .='<div id="eventlineplugin__data"> Go to <a title="' . $dataFile .'" class="wikilink1" href="' . wl($dataFile) . '">'.$data['file'].'</a> data</div>';
 
 	  // Add a div for timeline filter controls if selected
@@ -165,7 +186,8 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 
 	  // onload invoke timeline javascript 
 	  $R->doc .='<script>window.onLoad = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
-	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", "'.$overInterval.'");</script>' . "\n";
+	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", 
+	  "'.$overInterval.'", "'.$hotzone.'", "'.$hzStart.'", "'.$hzEnd.'", "'.$hzMagnify.'", "'.$hzUnit.'");</script>' . "\n";
 	  $R->doc .='<script>window.onResize=onResize();</script> ';
 	  return true;
     }

@@ -12,3 +12,5 @@ $conf['detailPixels'] = '100';
 $conf['overPixels']   = '200';
 $conf['detailInterval'] = 'DECADE';
 $conf['overInterval']   = 'CENTURY';
+$conf['hotzone']   = 'off';
+$conf['wikihtml']  = 'off';

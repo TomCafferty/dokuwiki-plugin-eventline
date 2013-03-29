@@ -90,7 +90,10 @@ class Doku_Renderer_plain extends Doku_Renderer_xhtml {
   }
  
   function externallink($url, $name = NULL) {
-    $this->doc .= ' ' . html_entity_decode($url, ENT_NOQUOTES) . ' ';
+    if ($name == NULL)
+      $this->doc .= ' ' . html_entity_decode($url, ENT_NOQUOTES) . ' ';
+    else
+      $this->doc .= ' <a href="' . html_entity_decode($url, ENT_NOQUOTES) . '">'.$name.'</a> ';
   }
 
   function interwikilink($match, $name = NULL, $wikiName, $wikiUri) {

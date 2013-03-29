@@ -2284,6 +2284,22 @@ A<this._listeners.length;
 A++){if(this._listeners[A]==B){this._listeners.splice(A,1);
 break;
 }}};
+Timeline.DefaultEventSource.prototype.concatChildValues = function(node, def) {
+var value = "";
+var child = node.firstChild;
+var childValue;
+while(child) {
+childValue = child.nodeValue;
+if(childValue) {
+value += childValue;
+}
+child = child.nextSibling;
+}
+if(value == "" && def != undefined) {
+value = def;
+}
+return value;
+};
 Timeline.DefaultEventSource.prototype.loadXML=function(G,A){var C=this._getBaseURL(A);
 var H=G.documentElement.getAttribute("wiki-url");
 var J=G.documentElement.getAttribute("wiki-section");
@@ -2292,7 +2308,7 @@ var E=this._events.getUnit().getParser(F);
 var D=G.documentElement.firstChild;
 var I=false;
 while(D!=null){if(D.nodeType==1){var L="";
-if(D.firstChild!=null&&D.firstChild.nodeType==3){L=D.firstChild.nodeValue;
+if(D.firstChild!=null&&D.firstChild.nodeType==3){L=this.concatChildValues(D);
 }var B=(D.getAttribute("isDuration")===null&&D.getAttribute("durationEvent")===null)||D.getAttribute("isDuration")=="false"||D.getAttribute("durationEvent")=="false";
 var K=new Timeline.DefaultEventSource.Event({id:D.getAttribute("id"),start:E(D.getAttribute("start")),end:E(D.getAttribute("end")),latestStart:E(D.getAttribute("latestStart")),earliestEnd:E(D.getAttribute("earliestEnd")),instant:B,text:D.getAttribute("title"),description:L,image:this._resolveRelativeURL(D.getAttribute("image"),C),link:this._resolveRelativeURL(D.getAttribute("link"),C),icon:this._resolveRelativeURL(D.getAttribute("icon"),C),color:D.getAttribute("color"),textColor:D.getAttribute("textColor"),hoverText:D.getAttribute("hoverText"),classname:D.getAttribute("classname"),tapeImage:D.getAttribute("tapeImage"),tapeRepeat:D.getAttribute("tapeRepeat"),caption:D.getAttribute("caption"),eventID:D.getAttribute("eventID"),trackNum:D.getAttribute("trackNum")});
 K._node=D;

@@ -22,6 +22,12 @@ function onLoad() {
     overPixels = arguments[10];
     detailInterval = arguments[11];
     overInterval   = arguments[12];
+
+    hotzone   = arguments[13];
+    hzStart   = arguments[14];
+    hzEnd     = arguments[15];
+    hzMagnify = arguments[16];
+    hzUnit    = arguments[17];
   
    theme.mousewheel = mouse; 
    theme.event.label.width = 500; 
@@ -29,6 +35,37 @@ function onLoad() {
    theme.event.bubble.maxHeight = bubbleH; 
 
   var eventSource = new Timeline.DefaultEventSource(); 
+  
+  if (hotzone == 'on')
+    var bandInfos = [
+     Timeline.createHotZoneBandInfo({
+        zones: [
+         { start:   hzStart,
+           end:     hzEnd,
+           magnify: hzMagnify,
+           unit:    convertTime(hzUnit)
+         }
+        ],
+        eventSource:    eventSource,
+        date:           center,
+        width:          detailPart, 
+        intervalUnit:   convertTime(detailInterval), 
+        intervalPixels: detailPixels,
+        theme: theme
+      }),
+      Timeline.createBandInfo({
+        overview:       true,
+        showEventText:  false,
+        trackHeight:    0.5,
+        trackGap:       0.2,
+        eventSource:    eventSource,
+        date:           center,
+        width:          overPart, 
+        intervalUnit:   convertTime(overInterval), 
+        intervalPixels: overPixels
+      })
+    ];
+  else
   
   if (bandPos == 'default')
     var bandInfos = [
@@ -61,14 +98,14 @@ function onLoad() {
         trackGap:       0.2,
         eventSource:    eventSource,
         date:           "Mar 8 999 00:00:00 GMT",
-        width:          "20%", 
+        width:          overPart, 
         intervalUnit:   convertTime(overInterval), 
         intervalPixels: overPixels
       }),
       Timeline.createBandInfo({
         eventSource:    eventSource,
         date:           "Mar 8 999 00:00:00 GMT",
-        width:          "80%", 
+        width:          detailPart, 
         intervalUnit:   convertTime(detailInterval), 
         intervalPixels: detailPixels,
         theme: theme

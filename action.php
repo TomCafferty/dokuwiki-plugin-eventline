@@ -60,6 +60,11 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
                             'type'    => 'text/javascript',
                             'charset' => 'utf-8',
                             '_data'   => '',
+                            'src'     => DOKU_BASE."lib/plugins/eventline/timeline_ajax/simile-ajax-api.js");
+            $event->data['script'][] = array(
+                            'type'    => 'text/javascript',
+                            'charset' => 'utf-8',
+                            '_data'   => '',
                             'src'     => DOKU_BASE."lib/plugins/eventline/timeline_js/timeline-api.js");
             $event->data['script'][] = array(
                             'type'    => 'text/javascript',
@@ -81,6 +86,8 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
     function convert(&$event, $param) {
         global $ACT;
         global $ID;
+        global $conf;
+        $key = 'keywords';
 
         // our event?
         if ($ACT != 'export_timeline' ) return false;
@@ -91,9 +98,18 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
         // it's ours, no one else's
         require_once ('getXmlData.php');
         $event->preventDefault();
+        
+       $wikihtml = '';
+       $metadata = p_get_metadata($ID, $key, false);
+       if (strpos($metadata, 'eventline_html') !== false) {
+         $wikihtml = 'on'; }
+       elseif (strpos($metadata, 'eventline_nohtml') !== false) {
+         $wikihtml = 'off'; }
+       else {
+        $wikihtml = $this->getConf('wikihtml'); }
 
         // get page data
-        $html = pullInXmlData($ID);
+        $html = pullInXmlData($ID, $wikihtml);
 
         // write to xml file
         $fp = fopen(DOKU_INC . 'data/pages/'. str_replace(":", "/", $ID) . '.xml', 'w');
