@@ -28,6 +28,16 @@ function onLoad() {
     hzEnd     = arguments[15];
     hzMagnify = arguments[16];
     hzUnit    = arguments[17];
+
+    hzStart2   = arguments[18];
+    hzEnd2     = arguments[19];
+    hzMagnify2 = arguments[20];
+    hzUnit2    = arguments[21];
+    
+    hzStart3   = arguments[22];
+    hzEnd3     = arguments[23];
+    hzMagnify3 = arguments[24];
+    hzUnit3    = arguments[25];
   
    theme.mousewheel = mouse; 
    theme.event.label.width = 500; 
@@ -44,6 +54,16 @@ function onLoad() {
            end:     hzEnd,
            magnify: hzMagnify,
            unit:    convertTime(hzUnit)
+         },
+         { start:   hzStart2,
+           end:     hzEnd2,
+           magnify: hzMagnify2,
+           unit:    convertTime(hzUnit2)
+         },
+         { start:   hzStart3,
+           end:     hzEnd3,
+           magnify: hzMagnify3,
+           unit:    convertTime(hzUnit3)
          }
         ],
         eventSource:    eventSource,

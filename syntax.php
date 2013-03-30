@@ -143,25 +143,18 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
        else
         $hotzone = $this->getConf('hotzone');
         
-       if (isset($data['hzStart'])) 
-        $hzStart = $data['hzStart'];
-       else
-        $hzStart = $this->getConf('hzStart');
-        
-       if (isset($data['hzEnd'])) 
-        $hzEnd = $data['hzEnd'];
-       else
-        $hzEnd = $this->getConf('hzEnd');
-        
-       if (isset($data['hzMagnify'])) 
-        $hzMagnify = $data['hzMagnify'];
-       else
-        $hzMagnify = $this->getConf('hzMagnify');
-        
-       if (isset($data['hzUnit'])) 
-        $hzUnit = $data['hzUnit'];
-       else
-        $hzUnit = $this->getConf('hzUnit');
+       $hzStart = $data['hzStart'];
+       $hzStart2 = $data['hzStart2'];
+       $hzStart3 = $data['hzStart3'];
+       $hzEnd = $data['hzEnd'];
+       $hzEnd2 = $data['hzEnd2'];
+       $hzEnd3 = $data['hzEnd3'];
+       $hzMagnify = $data['hzMagnify'];
+       $hzMagnify2 = $data['hzMagnify2'];
+       $hzMagnify3 = $data['hzMagnify3'];
+       $hzUnit = $data['hzUnit'];
+       $hzUnit2 = $data['hzUnit2'];
+       $hzUnit3 = $data['hzUnit3'];
               
       // Get file name ($dataFile) and full url path 
       $ns = $INFO['namespace'];
@@ -172,7 +165,7 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       // Set timeline div & class for css styling and jsvascript id
 	  $R->doc .='<div id="eventlineplugin__timeline" class="eventlineplugin__class" style="height:'.$height.';"></div>';
 	  
-	  // Add a link to the data file for dokuwiki editing (.txt) version
+	  // Add a link to the data file for dokuwiki editing (.txt) version if user has write access
       $info_perm     = auth_quickaclcheck($dataFile);
       $info_filepath = fullpath(wikiFN($dataFile));
       $info_writable = (is_writable($info_filepath) && ($info_perm >= AUTH_EDIT));
@@ -187,7 +180,7 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  // onload invoke timeline javascript 
 	  $R->doc .='<script>window.onLoad = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
 	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", 
-	  "'.$overInterval.'", "'.$hotzone.'", "'.$hzStart.'", "'.$hzEnd.'", "'.$hzMagnify.'", "'.$hzUnit.'");</script>' . "\n";
+	  "'.$overInterval.'", "'.$hotzone.'", "'.$hzStart.'", "'.$hzEnd.'", "'.$hzMagnify.'", "'.$hzUnit.'", "'.$hzStart2.'", "'.$hzEnd2.'", "'.$hzMagnify2.'", "'.$hzUnit2.'", "'.$hzStart3.'", "'.$hzEnd3.'", "'.$hzMagnify3.'", "'.$hzUnit3.'");</script>' . "\n";
 	  $R->doc .='<script>window.onResize=onResize();</script> ';
 	  return true;
     }
