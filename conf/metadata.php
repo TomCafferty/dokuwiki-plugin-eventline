@@ -13,3 +13,4 @@ $meta['overPixels']      = array('numeric');
 $meta['detailInterval']  = array('multichoice','_choices' => array('MILLISECOND', 'SECOND', 'MINUTE', 'HOUR', 'DAY', 'WEEK', 'MONTH', 'YEAR', 'DECADE', 'CENTURY', 'MILLENNIUM', 'EPOCH', 'ERA')); 
 $meta['overInterval']    = array('multichoice','_choices' => array('MILLISECOND', 'SECOND', 'MINUTE', 'HOUR', 'DAY', 'WEEK', 'MONTH', 'YEAR', 'DECADE', 'CENTURY', 'MILLENNIUM', 'EPOCH', 'ERA')); 
 $meta['wikihtml']        = array('onoff');
+$meta['showlink']        = array('onoff');

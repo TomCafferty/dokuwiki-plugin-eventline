@@ -166,10 +166,11 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  $R->doc .='<div id="eventlineplugin__timeline" class="eventlineplugin__class" style="height:'.$height.';"></div>';
 	  
 	  // Add a link to the data file for dokuwiki editing (.txt) version if user has write access
+	  $showlink = $this->getConf('showlink');      
       $info_perm     = auth_quickaclcheck($dataFile);
       $info_filepath = fullpath(wikiFN($dataFile));
       $info_writable = (is_writable($info_filepath) && ($info_perm >= AUTH_EDIT));
-	  if($info_writable)
+	  if($info_writable || ($showlink=='on'))
 	  $R->doc .='<div id="eventlineplugin__data"> Go to <a title="' . $dataFile .'" class="wikilink1" href="' . wl($dataFile) . '">'.$data['file'].'</a> data</div>';
 
 	  // Add a div for timeline filter controls if selected

@@ -14,3 +14,4 @@ $conf['detailInterval'] = 'DECADE';
 $conf['overInterval']   = 'CENTURY';
 $conf['hotzone']   = 'off';
 $conf['wikihtml']  = 'off';
+$conf['showlink']  = 'on';
