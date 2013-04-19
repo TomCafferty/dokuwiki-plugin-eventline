@@ -138,10 +138,10 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       else
         $overInterval = $this->getConf('overInterval');
         
-       if (isset($data['hotzone'])) 
-        $hotzone = $data['hotzone'];
+       if (isset($data['hotzone']) && $data['hotzone']=='on') 
+        $hotzone = 1;
        else
-        $hotzone = $this->getConf('hotzone');
+        $hotzone = 0;
         
        $hzStart = $data['hzStart'];
        $hzStart2 = $data['hzStart2'];
@@ -170,11 +170,11 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       $info_perm     = auth_quickaclcheck($dataFile);
       $info_filepath = fullpath(wikiFN($dataFile));
       $info_writable = (is_writable($info_filepath) && ($info_perm >= AUTH_EDIT));
-	  if($info_writable || ($showlink=='on'))
+	  if($info_writable || ($showlink==1))
 	  $R->doc .='<div id="eventlineplugin__data"> Go to <a title="' . $dataFile .'" class="wikilink1" href="' . wl($dataFile) . '">'.$data['file'].'</a> data</div>';
 
 	  // Add a div for timeline filter controls if selected
-	  if ($controls=='on'){
+	  if ($controls==1){
 		$R->doc .='<div class="eventlineplugin__controls" id="eventlineplugin__controls"></div>';
 	  }
 

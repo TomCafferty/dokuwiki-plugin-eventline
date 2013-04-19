@@ -102,9 +102,9 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
        $wikihtml = '';
        $metadata = p_get_metadata($ID, $key, false);
        if (strpos($metadata, 'eventline_html') !== false) {
-         $wikihtml = 'on'; }
+         $wikihtml = 1; }
        elseif (strpos($metadata, 'eventline_nohtml') !== false) {
-         $wikihtml = 'off'; }
+         $wikihtml = 0; }
        else {
         $wikihtml = $this->getConf('wikihtml'); }
 

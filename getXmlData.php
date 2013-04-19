@@ -41,7 +41,7 @@ function pullInXmlData ($dokuPageId, $wikihtml) {
     // get rendered html
     $html = $renderer->doc;
     
-	if ($wikihtml=='on')
+	if ($wikihtml==1)
       $ret_html = xmlentities(htmlentities($html, ENT_COMPAT));
     else
       $ret_html = $html;

@@ -46,7 +46,7 @@ function onLoad() {
 
   var eventSource = new Timeline.DefaultEventSource(); 
   
-  if (hotzone == 'on')
+  if (hotzone == 1)
     var bandInfos = [
      Timeline.createHotZoneBandInfo({
         zones: [
@@ -138,7 +138,7 @@ function onLoad() {
 
   tl = Timeline.create(document.getElementById("eventlineplugin__timeline"), bandInfos, Timeline.HORIZONTAL);
   Timeline.loadXML(filepath, function(xml, url) { eventSource.loadXML(xml, url); }); 
-  if (controls=='on') setupFilterHighlightControls(document.getElementById("eventlineplugin__controls"), tl, [0,1], theme); 
+  if (controls==1) setupFilterHighlightControls(document.getElementById("eventlineplugin__controls"), tl, [0,1], theme); 
   javascript:centerTimeline(center);
 }
 
