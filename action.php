@@ -109,7 +109,13 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
         $wikihtml = $this->getConf('wikihtml'); }
 
         // get page data
-        $html = pullInXmlData($ID, $wikihtml);
+        if (strpos($metadata, 'eventline_fr') !== false) {
+            setlocale(LC_CTYPE, 'fr_FR');
+            $html = iconv('UTF-8', 'ASCII//TRANSLIT', pullInXmlData($ID, $wikihtml));
+            $html = str_ireplace("'", "&#039;", $html);
+        } else {
+            $html = pullInXmlData($ID, $wikihtml);
+        }
 
         // write to xml file
         $fp = fopen(DOKU_INC . 'data/pages/'. str_replace(":", "/", $ID) . '.xml', 'w');
