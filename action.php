@@ -42,12 +42,9 @@ class action_plugin_eventline extends DokuWiki_Action_Plugin {
     function eventline_hookjs(&$event, $param) {
         global $INFO;
         global $ID;
-        $key = 'keywords';
         
-        $metadata = p_get_metadata($ID, $key, false);
-        
-        // keyword timeline used to include timeline javascript files
-        if (strpos($metadata, 'timeline') !== false) {
+        // metadata check to include javascript files if needed
+        if (p_get_metadata($ID, 'plugin eventline')) {
             $event->data['script'][] = array(
                             'type'    => 'text/javascript',
                             'charset' => 'utf-8',
