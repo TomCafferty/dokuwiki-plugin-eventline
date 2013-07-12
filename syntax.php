@@ -71,6 +71,13 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
       global $INFO;
       global $ID;
       global $conf;
+
+      // store meta info for this page
+      if($mode == 'metadata'){
+        $R->meta['plugin']['eventline'] = true;
+        return true;
+      }
+
       if($mode != 'xhtml') return false;
       // Initialize settings from user input or conf file
       if (isset($data['bubbleMaxHeight'])) 
