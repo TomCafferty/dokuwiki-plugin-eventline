@@ -186,10 +186,41 @@ class syntax_plugin_eventline extends DokuWiki_Syntax_Plugin {
 	  }
 
 	  // onload invoke timeline javascript 
-	  $R->doc .='<script>window.onLoad = onLoad("'.$filePath.'" , '.$bubbleHeight.', '.$bubbleWidth.', "'.$mouse.'", "'.$center.'", "'
-	  .$controls.'", "'.$bandPos.'", "'.$detailPercent.'", "'.$overPercent.'", "'.$detailPixels.'", "'.$overPixels.'", "'.$detailInterval.'", 
-	  "'.$overInterval.'", "'.$hotzone.'", "'.$hzStart.'", "'.$hzEnd.'", "'.$hzMagnify.'", "'.$hzUnit.'", "'.$hzStart2.'", "'.$hzEnd2.'", "'.$hzMagnify2.'", "'.$hzUnit2.'", "'.$hzStart3.'", "'.$hzEnd3.'", "'.$hzMagnify3.'", "'.$hzUnit3.'");</script>' . "\n";
-	  $R->doc .='<script>window.onResize=onResize();</script> ';
+	  $R->doc .= $this->_script($filePath, $bubbleHeight, $bubbleWidth, $mouse, $center, $controls, $bandPos, $detailPercent, $overPercent, $detailPixels, $overPixels, $detailInterval, $overInterval, $hotzone, $hzStart, $hzEnd, $hzMagnify, $hzUnit, $hzStart2, $hzEnd2, $hzMagnify2, $hzUnit2, $hzStart3, $hzEnd3, $hzMagnify3, $hzUnit3);
 	  return true;
+    }
+    
+    function _script($filePath, $bubbleHeight, $bubbleWidth, $mouse, $center, $controls, $bandPos, $detailPercent, $overPercent, $detailPixels, $overPixels, $detailInterval, $overInterval, $hotzone, $hzStart, $hzEnd, $hzMagnify, $hzUnit, $hzStart2, $hzEnd2, $hzMagnify2, $hzUnit2, $hzStart3, $hzEnd3, $hzMagnify3, $hzUnit3){
+        $str = '<script type="text/javascript" language="javascript">';
+        $str .= 'var plugin_eventline_filePath = "'.$filePath.'";';
+        $str .= 'var plugin_eventline_bubbleHeight = '.$bubbleHeight.';';
+        $str .= 'var plugin_eventline_bubbleWidth = '.$bubbleWidth.';';
+        $str .= 'var plugin_eventline_mouse = "'.$mouse.'";';
+        $str .= 'var plugin_eventline_center = "'.$center.'";';
+        $str .= 'var plugin_eventline_controls = "'.$controls.'";';
+        $str .= 'var plugin_eventline_bandPos = "'.$bandPos.'";';
+        $str .= 'var plugin_eventline_detailPercent = "'.$detailPercent.'";';
+        $str .= 'var plugin_eventline_overPercent = "'.$overPercent.'";';
+        $str .= 'var plugin_eventline_detailPixels = "'.$detailPixels.'";';
+        $str .= 'var plugin_eventline_overPixels = "'.$overPixels.'";';
+        $str .= 'var plugin_eventline_detailInterval = "'.$detailInterval.'";';
+        $str .= 'var plugin_eventline_overInterval = "'.$overInterval.'";';
+        $str .= 'var plugin_eventline_hotzone = "'.$hotzone.'";';
+        $str .= 'var plugin_eventline_hzStart = "'.$hzStart.'";';
+        $str .= 'var plugin_eventline_hzEnd = "'.$hzEnd.'";';
+        $str .= 'var plugin_eventline_hzMagnify = "'.$hzMagnify.'";';
+        $str .= 'var plugin_eventline_hzUnit = "'.$hzUnit.'";';
+        $str .= 'var plugin_eventline_hzStart2 = "'.$hzStart2.'";';
+        $str .= 'var plugin_eventline_hzEnd2 = "'.$hzEnd2.'";';
+        $str .= 'var plugin_eventline_hzMagnify2 = "'.$hzMagnify2.'";';
+        $str .= 'var plugin_eventline_hzUnit2 = "'.$hzUnit2.'";';
+        $str .= 'var plugin_eventline_hzStart3 = "'.$hzStart3.'";';
+        $str .= 'var plugin_eventline_hzEnd3 = "'.$hzEnd3.'";';
+        $str .= 'var plugin_eventline_hzMagnify3 = "'.$hzMagnify3.'";';
+        $str .= 'var plugin_eventline_hzUnit3 = "'.$hzUnit3.'";';
+        $str .= "jQuery('#plugin_eventline').bind('load', plugin_eventline());";
+        $str .= "jQuery('#plugin_eventline').bind('resize', plugin_eventline_onResize());";
+        $str .= '</script>';
+        return $str;
     }
 }
