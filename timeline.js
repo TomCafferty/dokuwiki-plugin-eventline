@@ -4,40 +4,40 @@
  */
 var tl;
 
-function onLoad() {
+function plugin_eventline() {
     
     var theme = Timeline.ClassicTheme.create(); 
     var filepath;
     
-    filepath = arguments[0];
-    bubbleH = arguments[1];
-    bubbleW = arguments[2];
-    mouse = arguments[3];
-    center = arguments[4];
-    controls = arguments[5];
-    bandPos = arguments[6];
-    detailPart = arguments[7];
-    overPart = arguments[8];
-    detailPixels = arguments[9];
-    overPixels = arguments[10];
-    detailInterval = arguments[11];
-    overInterval   = arguments[12];
+    filepath = plugin_eventline_filePath;
+    bubbleH = plugin_eventline_bubbleHeight;
+    bubbleW = plugin_eventline_bubbleWidth;
+    mouse = plugin_eventline_mouse;
+    center = plugin_eventline_center;
+    controls = plugin_eventline_controls;
+    bandPos = plugin_eventline_bandPos;
+    detailPart = plugin_eventline_detailPercent;
+    overPart = plugin_eventline_overPercent;
+    detailPixels = plugin_eventline_detailPixels;
+    overPixels = plugin_eventline_overPixels;
+    detailInterval = plugin_eventline_detailInterval;
+    overInterval   = plugin_eventline_overInterval;
 
-    hotzone   = arguments[13];
-    hzStart   = arguments[14];
-    hzEnd     = arguments[15];
-    hzMagnify = arguments[16];
-    hzUnit    = arguments[17];
+    hotzone   = plugin_eventline_hotzone;
+    hzStart   = plugin_eventline_hzStart;
+    hzEnd     = plugin_eventline_hzEnd;
+    hzMagnify = plugin_eventline_hzMagnify;
+    hzUnit    = plugin_eventline_hzUnit;
 
-    hzStart2   = arguments[18];
-    hzEnd2     = arguments[19];
-    hzMagnify2 = arguments[20];
-    hzUnit2    = arguments[21];
+    hzStart2   = plugin_eventline_hzStart2;
+    hzEnd2     = plugin_eventline_hzEnd2;
+    hzMagnify2 = plugin_eventline_hzMagnify2;
+    hzUnit2    = plugin_eventline_hzUnit2;
     
-    hzStart3   = arguments[22];
-    hzEnd3     = arguments[23];
-    hzMagnify3 = arguments[24];
-    hzUnit3    = arguments[25];
+    hzStart3   = plugin_eventline_hzStart3;
+    hzEnd3     = plugin_eventline_hzEnd3;
+    hzMagnify3 = plugin_eventline_hzMagnify3;
+    hzUnit3    = plugin_eventline_hzUnit3;
   
    theme.mousewheel = mouse; 
    theme.event.label.width = 500; 
@@ -147,7 +147,7 @@ function centerTimeline(dateStr) {
 }
         
 var resizeTimerID = null;
-function onResize() {
+function plugin_eventline_onResize() {
     if (resizeTimerID == null) {
         resizeTimerID = window.setTimeout(function() {
             resizeTimerID = null;
