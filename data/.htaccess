@@ -1,6 +1,0 @@
-order allow,deny
-deny from all
-<FilesMatch "\.(xml)$">
- Order Allow,Deny
- Allow from all
-</FilesMatch>
